@@ -15,9 +15,9 @@ public class Listener {
         this.stringHolderService = stringHolderService;
     }
 
-    @JmsListener(destination = "box")
+    @JmsListener(destination = "${activemq.queue.name}")
     public void listen(String message) {
-        System.out.println(message);
+        System.out.println("message: " + message);
         stringHolderService.createOrUpdateStringHolder(message);
     }
 }
