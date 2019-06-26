@@ -6,10 +6,14 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-public class Contr {
+public class StringController {
+
+    private JmsOperations jmsOperations;
 
     @Autowired
-    JmsOperations jmsOperations;
+    public StringController(JmsOperations jmsOperations) {
+        this.jmsOperations = jmsOperations;
+    }
 
     @GetMapping("send")
     public String send() {
