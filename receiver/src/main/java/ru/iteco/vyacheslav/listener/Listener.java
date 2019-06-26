@@ -17,6 +17,7 @@ public class Listener {
 
     @JmsListener(destination = "box")
     public void listen(String message) {
+        System.out.println(message);
         stringHolderService.createOrUpdateStringHolder(message);
     }
 }

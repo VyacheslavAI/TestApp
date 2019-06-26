@@ -3,6 +3,8 @@ package ru.iteco.vyacheslav.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jms.core.JmsOperations;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -15,9 +17,14 @@ public class StringController {
         this.jmsOperations = jmsOperations;
     }
 
-    @GetMapping("send")
-    public String send() {
+    @GetMapping("/box")
+    public void test() {
         jmsOperations.convertAndSend("box", "Misha");
-        return "message was send";
+    }
+
+    @PostMapping("/send")
+    public void send(@RequestBody String message) {
+        System.out.println(message + " is message");
+        jmsOperations.convertAndSend("box", message);
     }
 }
