@@ -1,12 +1,13 @@
-package ru.iteco.vyacheslav.listener;
+package ru.iteco.vyacheslav.listener.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jms.annotation.JmsListener;
 import org.springframework.stereotype.Component;
+import ru.iteco.vyacheslav.listener.api.IListener;
 import ru.iteco.vyacheslav.service.api.IStringHolderService;
 
 @Component
-public class Listener {
+public class Listener implements IListener {
 
     private IStringHolderService stringHolderService;
 
